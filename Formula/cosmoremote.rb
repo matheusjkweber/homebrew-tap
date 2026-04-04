@@ -1,8 +1,8 @@
 class Cosmoremote < Formula
   desc "Control Claude Code and Codex on your Mac from your phone"
   homepage "https://github.com/matheusjkweber/cosmoremote"
-  url "https://registry.npmjs.org/cosmoremote/-/cosmoremote-1.0.17.tgz"
-  sha256 "74ba30ed3c937fdef6e0a69f346a3c6a24c84a41569c6bdf5bb9c7a324f5b444"
+  url "https://registry.npmjs.org/cosmoremote/-/cosmoremote-1.0.18.tgz"
+  sha256 "10feae40d99b9163681ff341071a12bb6eaf01921a750774ceb408cae6939d48"
   license "MIT"
 
   depends_on "node"
