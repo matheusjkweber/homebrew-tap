@@ -1,0 +1,38 @@
+name: Bump tanya formula
+
+# Keeps Formula/tanya.rb in sync with the latest npm release of
+# @matheuskrumenauer/tanya. Runs daily and on demand.
+
+on:
+  schedule:
+    - cron: "0 7 * * *"
+  workflow_dispatch:
+
+jobs:
+  bump:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: Bump Formula/tanya.rb to latest npm release
+        run: |
+          set -euo pipefail
+          pkg="@matheuskrumenauer/tanya"
+          latest=$(npm view "$pkg" version)
+          current=$(sed -nE 's#.*tanya-([0-9][0-9.]*)\.tgz.*#\1#p' Formula/tanya.rb)
+          echo "current=$current latest=$latest"
+          if [ "$latest" = "$current" ]; then
+            echo "Formula already at $latest — nothing to do."
+            exit 0
+          fi
+          tarball=$(npm view "$pkg@$latest" dist.tarball)
+          curl -fsSL "$tarball" -o /tmp/pkg.tgz
+          sha=$(sha256sum /tmp/pkg.tgz | awk '{print $1}')
+          sed -i -E "s#url \".*\"#url \"$tarball\"#" Formula/tanya.rb
+          sed -i -E "s#sha256 \"[a-f0-9]+\"#sha256 \"$sha\"#" Formula/tanya.rb
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add Formula/tanya.rb
+          git commit -m "tanya: bump to $latest"
+          git push
