@@ -1,8 +1,8 @@
 class Tanya < Formula
   desc "Live, tool-using AI CLI for DeepSeek and OpenAI-compatible providers"
   homepage "https://github.com/matheusjkweber/tanya"
-  url "https://registry.npmjs.org/@matheuskrumenauer/tanya/-/tanya-0.17.0.tgz"
-  sha256 "8ad793679fb476cb25719b807f803b17aecf812a1502a00b6242836cc1f14891"
+  url "https://registry.npmjs.org/@matheuskrumenauer/tanya/-/tanya-0.17.6.tgz"
+  sha256 "f72586e48048ab23726838af84db7c97e3e45a311f44c516845eb63722e9a712"
   license "MIT"
 
   depends_on "node"
