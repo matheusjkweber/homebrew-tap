@@ -1,5 +1,5 @@
 class Cosmokit < Formula
-  desc "Drive the iOS Simulator from the command line"
+  desc "Drive the iOS Simulator from the command-line"
   homepage "https://github.com/maththedev42/cosmokit-cli"
   url "https://github.com/maththedev42/cosmokit-cli/releases/download/v0.1.0/cosmokit-0.1.0-macos-universal.tar.gz"
   sha256 "15aad3cfe4400599aa124a42eaa229d4801aa3c349389df1568c83279a365996"
